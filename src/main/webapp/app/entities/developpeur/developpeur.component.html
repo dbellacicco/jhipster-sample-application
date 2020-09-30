@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.developpeur.home.title">Developpeurs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-developpeur" [routerLink]="['/developpeur/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.developpeur.home.createLabel">
+            Create a new Developpeur
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="developpeurs?.length === 0">
+        <span jhiTranslate="jhipsterSampleApplicationApp.developpeur.home.notFound">No developpeurs found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="developpeurs && developpeurs.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.prenom">Prenom</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.nom">Nom</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.dateNaissance">Date Naissance</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.email">Email</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.nbTachesEnCours">Nb Taches En Cours</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.numeroCarteBleue">Numero Carte Bleue</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.projets">Projets</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.taches">Taches</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let developpeur of developpeurs ;trackBy: trackId">
+                    <td><a [routerLink]="['/developpeur', developpeur.id, 'view']">{{ developpeur.id }}</a></td>
+                    <td>{{ developpeur.prenom }}</td>
+                    <td>{{ developpeur.nom }}</td>
+                    <td>{{ developpeur.dateNaissance | date:'medium' }}</td>
+                    <td>{{ developpeur.email }}</td>
+                    <td>{{ developpeur.nbTachesEnCours }}</td>
+                    <td>{{ developpeur.numeroCarteBleue }}</td>
+                    <td>
+                        <span *ngFor="let projets of developpeur.projets; let last = last">
+                            <a class="form-control-static" [routerLink]="['/projet', projets?.id, 'view']">{{ projets.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span *ngFor="let taches of developpeur.taches; let last = last">
+                            <a class="form-control-static" [routerLink]="['/tache', taches?.id, 'view']">{{ taches.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/developpeur', developpeur.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/developpeur', developpeur.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(developpeur)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
