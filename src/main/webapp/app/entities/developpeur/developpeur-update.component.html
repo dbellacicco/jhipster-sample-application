@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-developpeur-heading" jhiTranslate="jhipsterSampleApplicationApp.developpeur.home.createOrEditLabel">Create or edit a Developpeur</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.developpeur.prenom" for="field_prenom">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="field_prenom"
+                           formControlName="prenom"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.developpeur.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           formControlName="nom"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.developpeur.dateNaissance" for="field_dateNaissance">Date Naissance</label>
+                    <div class="d-flex">
+                        <input id="field_dateNaissance" type="datetime-local" class="form-control" name="dateNaissance" formControlName="dateNaissance" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.developpeur.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.developpeur.nbTachesEnCours" for="field_nbTachesEnCours">Nb Taches En Cours</label>
+                    <input type="number" class="form-control" name="nbTachesEnCours" id="field_nbTachesEnCours"
+                           formControlName="nbTachesEnCours"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.developpeur.numeroCarteBleue" for="field_numeroCarteBleue">Numero Carte Bleue</label>
+                    <input type="text" class="form-control" name="numeroCarteBleue" id="field_numeroCarteBleue"
+                           formControlName="numeroCarteBleue"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.developpeur.projets" for="field_projets">Projets</label>
+                    <select class="form-control" id="field_projets" multiple name="projets" formControlName="projets">
+                        <option [ngValue]="getSelected(editForm.get('projets')!.value, projetOption)" *ngFor="let projetOption of projets; trackBy: trackById">{{ projetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterSampleApplicationApp.developpeur.taches" for="field_taches">Taches</label>
+                    <select class="form-control" id="field_taches" multiple name="taches" formControlName="taches">
+                        <option [ngValue]="getSelected(editForm.get('taches')!.value, tacheOption)" *ngFor="let tacheOption of taches; trackBy: trackById">{{ tacheOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

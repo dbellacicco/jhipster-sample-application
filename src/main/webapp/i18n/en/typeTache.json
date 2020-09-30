@@ -1,0 +1,24 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "typeTache": {
+      "home": {
+        "title": "Type Taches",
+        "createLabel": "Create a new Type Tache",
+        "createOrEditLabel": "Create or edit a Type Tache",
+        "notFound": "No Type Taches found"
+      },
+      "created": "A new Type Tache is created with identifier {{ param }}",
+      "updated": "A Type Tache is updated with identifier {{ param }}",
+      "deleted": "A Type Tache is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Type Tache {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Tache"
+      },
+      "nom": "Nom",
+      "couleur": "Couleur",
+      "taches": "Taches"
+    }
+  }
+}
