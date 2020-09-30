@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="developpeur">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.detail.title">Developpeur</span> {{ developpeur.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{ developpeur.prenom }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ developpeur.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{ developpeur.dateNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.email">Email</span></dt>
+                <dd>
+                    <span>{{ developpeur.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.nbTachesEnCours">Nb Taches En Cours</span></dt>
+                <dd>
+                    <span>{{ developpeur.nbTachesEnCours }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.numeroCarteBleue">Numero Carte Bleue</span></dt>
+                <dd>
+                    <span>{{ developpeur.numeroCarteBleue }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.projets">Projets</span></dt>
+                <dd>
+                    <span *ngFor="let projets of developpeur.projets; let last = last">
+                        <a [routerLink]="['/projet', projets?.id, 'view']">{{ projets.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.developpeur.taches">Taches</span></dt>
+                <dd>
+                    <span *ngFor="let taches of developpeur.taches; let last = last">
+                        <a [routerLink]="['/tache', taches?.id, 'view']">{{ taches.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/developpeur', developpeur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

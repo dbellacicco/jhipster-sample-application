@@ -47,6 +47,21 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.User.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
             createCache(cm, com.mycompany.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.myapp.domain.Client.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Client.class.getName() + ".projets");
+            createCache(cm, com.mycompany.myapp.domain.Colonne.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Colonne.class.getName() + ".taches");
+            createCache(cm, com.mycompany.myapp.domain.Ville.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TypeTache.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TypeTache.class.getName() + ".taches");
+            createCache(cm, com.mycompany.myapp.domain.Tache.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Tache.class.getName() + ".developpeurs");
+            createCache(cm, com.mycompany.myapp.domain.Developpeur.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Developpeur.class.getName() + ".projets");
+            createCache(cm, com.mycompany.myapp.domain.Developpeur.class.getName() + ".taches");
+            createCache(cm, com.mycompany.myapp.domain.Projet.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Projet.class.getName() + ".taches");
+            createCache(cm, com.mycompany.myapp.domain.Projet.class.getName() + ".developpeurs");
             // jhipster-needle-ehcache-add-entry
         };
     }

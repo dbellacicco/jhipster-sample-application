@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tache">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.tache.detail.title">Tache</span> {{ tache.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.intitule">Intitule</span></dt>
+                <dd>
+                    <span>{{ tache.intitule }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.dateCreation">Date Creation</span></dt>
+                <dd>
+                    <span>{{ tache.dateCreation }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.nbHeuresEstimees">Nb Heures Estimees</span></dt>
+                <dd>
+                    <span>{{ tache.nbHeuresEstimees }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.nbHeuresReelles">Nb Heures Reelles</span></dt>
+                <dd>
+                    <span>{{ tache.nbHeuresReelles }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.colonne">Colonne</span></dt>
+                <dd>
+                    <div *ngIf="tache.colonne">
+                        <a [routerLink]="['/colonne', tache.colonne?.id, 'view']">{{ tache.colonne?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.projet">Projet</span></dt>
+                <dd>
+                    <div *ngIf="tache.projet">
+                        <a [routerLink]="['/projet', tache.projet?.id, 'view']">{{ tache.projet?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.typeTache">Type Tache</span></dt>
+                <dd>
+                    <div *ngIf="tache.typeTache">
+                        <a [routerLink]="['/type-tache', tache.typeTache?.id, 'view']">{{ tache.typeTache?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.colonne">Colonne</span></dt>
+                <dd>
+                    <div *ngIf="tache.colonne">
+                        <a [routerLink]="['/colonne', tache.colonne?.id, 'view']">{{ tache.colonne?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.projet">Projet</span></dt>
+                <dd>
+                    <div *ngIf="tache.projet">
+                        <a [routerLink]="['/projet', tache.projet?.id, 'view']">{{ tache.projet?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.tache.typeTache">Type Tache</span></dt>
+                <dd>
+                    <div *ngIf="tache.typeTache">
+                        <a [routerLink]="['/type-tache', tache.typeTache?.id, 'view']">{{ tache.typeTache?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tache', tache.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
