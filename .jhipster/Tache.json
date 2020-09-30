@@ -1,0 +1,84 @@
+{
+  "name": "Tache",
+  "fields": [
+    {
+      "fieldName": "intitule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "nbHeuresEstimees",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbHeuresReelles",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "colonne",
+      "otherEntityRelationshipName": "tache",
+      "relationshipName": "colonne",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "tache",
+      "relationshipName": "projet",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeTache",
+      "otherEntityRelationshipName": "tache",
+      "relationshipName": "typeTache",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "colonne",
+      "otherEntityRelationshipName": "taches",
+      "relationshipName": "colonne",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "taches",
+      "relationshipName": "projet",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeTache",
+      "otherEntityRelationshipName": "taches",
+      "relationshipName": "typeTache",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "developpeur",
+      "otherEntityRelationshipName": "taches",
+      "relationshipName": "developpeurs",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200930134213",
+  "entityTableName": "tache",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-tache-heading" jhiTranslate="jhipsterSampleApplicationApp.tache.home.createOrEditLabel">Create or edit a Tache</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.intitule" for="field_intitule">Intitule</label>
+                    <input type="text" class="form-control" name="intitule" id="field_intitule"
+                           formControlName="intitule"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.dateCreation" for="field_dateCreation">Date Creation</label>
+                    <div class="d-flex">
+                        <input id="field_dateCreation" type="datetime-local" class="form-control" name="dateCreation" formControlName="dateCreation" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.nbHeuresEstimees" for="field_nbHeuresEstimees">Nb Heures Estimees</label>
+                    <input type="number" class="form-control" name="nbHeuresEstimees" id="field_nbHeuresEstimees"
+                           formControlName="nbHeuresEstimees"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.nbHeuresReelles" for="field_nbHeuresReelles">Nb Heures Reelles</label>
+                    <input type="number" class="form-control" name="nbHeuresReelles" id="field_nbHeuresReelles"
+                           formControlName="nbHeuresReelles"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.colonne" for="field_colonne">Colonne</label>
+                    <select class="form-control" id="field_colonne" name="colonne" formControlName="colonne">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="colonneOption.id === editForm.get('colonne')!.value?.id ? editForm.get('colonne')!.value : colonneOption" *ngFor="let colonneOption of colonnes; trackBy: trackById">{{ colonneOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.projet" for="field_projet">Projet</label>
+                    <select class="form-control" id="field_projet" name="projet" formControlName="projet">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="projetOption.id === editForm.get('projet')!.value?.id ? editForm.get('projet')!.value : projetOption" *ngFor="let projetOption of projets; trackBy: trackById">{{ projetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.typeTache" for="field_typeTache">Type Tache</label>
+                    <select class="form-control" id="field_typeTache" name="typeTache" formControlName="typeTache">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeTacheOption.id === editForm.get('typeTache')!.value?.id ? editForm.get('typeTache')!.value : typeTacheOption" *ngFor="let typeTacheOption of typetaches; trackBy: trackById">{{ typeTacheOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.colonne" for="field_colonne">Colonne</label>
+                    <select class="form-control" id="field_colonne" name="colonne" formControlName="colonne">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="colonneOption.id === editForm.get('colonne')!.value?.id ? editForm.get('colonne')!.value : colonneOption" *ngFor="let colonneOption of colonnes; trackBy: trackById">{{ colonneOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.projet" for="field_projet">Projet</label>
+                    <select class="form-control" id="field_projet" name="projet" formControlName="projet">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="projetOption.id === editForm.get('projet')!.value?.id ? editForm.get('projet')!.value : projetOption" *ngFor="let projetOption of projets; trackBy: trackById">{{ projetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.tache.typeTache" for="field_typeTache">Type Tache</label>
+                    <select class="form-control" id="field_typeTache" name="typeTache" formControlName="typeTache">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeTacheOption.id === editForm.get('typeTache')!.value?.id ? editForm.get('typeTache')!.value : typeTacheOption" *ngFor="let typeTacheOption of typetaches; trackBy: trackById">{{ typeTacheOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

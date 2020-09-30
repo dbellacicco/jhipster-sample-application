@@ -1,0 +1,58 @@
+{
+  "name": "Developpeur",
+  "fields": [
+    {
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbTachesEnCours",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numeroCarteBleue",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "developpeurs",
+      "relationshipName": "projets",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "tache",
+      "otherEntityRelationshipName": "developpeurs",
+      "relationshipName": "taches",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200930134313",
+  "entityTableName": "developpeur",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
