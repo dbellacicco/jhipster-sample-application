@@ -1,0 +1,65 @@
+entity Client {
+	id Long,
+	nom String
+}
+
+entity Colonne{
+	id Long,
+    nom String
+}
+
+entity Ville{
+	id Long,
+    nom String,
+    codePostal String
+}
+entity TypeTache{
+	id Long,
+    nom String,
+    couleur String
+}
+
+entity Tache{
+	id Long,
+    intitule String,
+    dateCreation Instant,
+    nbHeuresEstimees Integer,
+    nbHeuresReelles Integer
+}
+entity Developpeur {
+    id Long,
+    prenom String,
+    nom String,
+    dateNaissance Instant,
+    email String,
+    nbTachesEnCours Integer,
+    numeroCarteBleue String
+}
+entity Projet {
+    id Long,
+    nom String,
+    dateDeCreation Instant,
+    dateDeLivraison Instant,
+}
+
+relationship OneToMany {
+	Client{projets} to Projet,
+	Colonne{taches} to Tache,
+	Projet{taches} to Tache,
+    TypeTache{taches} to Tache
+}
+
+relationship ManyToOne {
+	Client{ville} to Ville,
+	Projet{client} to Client,
+	Tache{colonne} to Colonne ,
+	Tache{projet} to Projet,
+	Tache{typeTache} to TypeTache
+	
+}
+relationship ManyToMany {
+	Developpeur{projets} to Projet{developpeurs},    
+	Developpeur{taches} to Tache{developpeurs}
+}
+
+
